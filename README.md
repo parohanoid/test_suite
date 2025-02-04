@@ -1,5 +1,5 @@
 # test_suite
 
-A practice repo for UI (Selenium + Pytest), API Testing (Pytest + Requests) and Healenium Integration
+A sample repo for API Testing (Pytest + Requests + Allure)
 
 Mock API used: https://dummyjson.com
