@@ -22,3 +22,6 @@ Mock API used: https://dummyjson.com
 1. Config git username and email:
     - `git config user.name "[name]"`
     - `git config user.email "[email]"`
+2. Setup ssh
+    - Run `ssh-keygen`
+    - Add contents of id_ed25519.pub [here](https://github.com/settings/keys)
