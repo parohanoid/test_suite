@@ -39,9 +39,12 @@ jobs:
         run: |
           pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
       
+      - uses: browser-actions/setup-chrome@v1
+      - run: chrome --version
+      
       - name: Run Web Tests
         run: |
-          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html
+          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html  
 
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
