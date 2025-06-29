@@ -46,14 +46,14 @@ jobs:
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       
       - name: Run API Tests
-        if: ${{ (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
+        if: ${{ (inputs.which_ones != null) && (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
         run: |
           pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
       
       - uses: browser-actions/setup-chrome@v1
 
       - name: Run Web Tests
-        if: ${{ (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
+        if: ${{ (inputs.which_ones != null) && (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
         run: |
           pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html  
 
