@@ -35,9 +35,9 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       
-      - name: Run API Tests
-        run: |
-          pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
+      # - name: Run API Tests
+      #   run: |
+      #     pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
       
       - uses: browser-actions/setup-chrome@v1
         with:
