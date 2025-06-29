@@ -1,4 +1,4 @@
-name: Run API Tests
+name: Run WEB Tests
 
 on:
   push:
