@@ -4,7 +4,7 @@ import random
 
 @pytest.fixture
 def url():
-    return "http://localhost:8888"
+    return "https://dummyjson.com"
 
 @pytest.fixture
 def headers():
