@@ -2,7 +2,7 @@ import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
+import chromedriver_autoinstaller
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.chrome.options import Options
@@ -13,7 +13,9 @@ def test_textbox():
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--headless-new")
 
-    driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
+    chromedriver_autoinstaller.install()
+
+    driver = webdriver.Chrome(service=ChromeService(), options=chrome_options)
     driver.get("https://demoqa.com/text-box")
 
     input = "Hello, HAHA"
