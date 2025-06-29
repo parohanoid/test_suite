@@ -1,25 +1,45 @@
 name: Generate CV
+
 on:
   push:
-    paths:
-      - 'tests_**/**'
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+permissions:
+  contents: read
+
 jobs:
-  run_api_tests:
-    timeout-minutes: 60
+  build:
+
     runs-on: ubuntu-latest
+    
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.13'
           cache: 'pip'
-      - run: pip install -r requirements.txt
-
-      - name: Set Git user information
+      
+      - name: Install dependencies
         run: |
-          git config --global user.email "github-actions@example.com"
-          git config --global user.name "GitHub Actions"
-
-      - name: Run API Tests and generate report
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      
+      - name: Lint with flake8
         run: |
-            pytest --junitxml=results.xml
+          # stop the build if there are Python syntax errors or undefined names
+          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          
+          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
+          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+      
+      - name: Test with pytest
+        run: |
+          pytest --junitxml=results/api_results.xml --html=api_results/api_results.html
+      
+      - name: Upload test results to artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Test Results
+          path: results/
