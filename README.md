@@ -25,3 +25,11 @@ Mock API used: https://dummyjson.com
 2. Setup ssh
     - Run `ssh-keygen`
     - Add contents of id_ed25519.pub [here](https://github.com/settings/keys)
+
+https://github.github.io/actions-cheat-sheet/actions-cheat-sheet.html
+
+
+
+For Selenium:
+1. `apt-get -y update`
+2. `apt-get -y install google-chrome-stable`
