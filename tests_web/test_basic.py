@@ -13,7 +13,7 @@ def test_textbox():
     chrome_options.add_argument("--start-maximized")
     chrome_options.add_argument("--headless=new")
 
-    # chromedriver_autoinstaller.install()
+    chromedriver_autoinstaller.install()
 
     driver = webdriver.Chrome(service=ChromeService(), options=chrome_options)
     driver.get("https://demoqa.com/text-box")
