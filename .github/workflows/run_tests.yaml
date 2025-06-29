@@ -35,10 +35,14 @@ jobs:
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       
-      - name: Test with pytest
+      - name: Run API Tests
         run: |
-          pytest --junitxml=results/api_results.xml --html=results/api_results.html
+          pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
       
+      - name: Run Web Tests
+        run: |
+          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html
+
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
         with:
