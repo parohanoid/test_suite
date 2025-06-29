@@ -1,4 +1,4 @@
-name: Run API Tests
+name: Run Tests
 
 on:
   push:
@@ -13,9 +13,9 @@ on:
         default: 'Both'
         type: choice
         options:
-          - Both
-          - API
-          - WEB
+          - 'Both'
+          - 'API'
+          - 'WEB'
 
 permissions:
   contents: read
