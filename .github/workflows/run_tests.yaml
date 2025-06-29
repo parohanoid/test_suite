@@ -40,7 +40,6 @@ jobs:
           pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
       
       - uses: browser-actions/setup-chrome@v1
-      - run: chrome --version
       
       - name: Run Web Tests
         run: |
