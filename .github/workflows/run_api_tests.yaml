@@ -36,7 +36,7 @@ jobs:
       
       - name: Test with pytest
         run: |
-          pytest --junitxml=results/api_results.xml --html=api_results/api_results.html
+          pytest --junitxml=results/api_results.xml --html=results/api_results.html
       
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
