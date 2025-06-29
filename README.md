@@ -16,4 +16,9 @@ Mock API used: https://dummyjson.com
 3. To install additional packages, 
     - Activate venv
     - Install package
-    - Run `pip freeze > requirements.txt` 
+    - Run `pip freeze > requirements.txt`
+
+#### Very basic notes
+1. Config git username and email:
+    - `git config user.name "[name]"`
+    - `git config user.email "[email]"`
