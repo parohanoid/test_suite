@@ -1,0 +1,15 @@
+[project]
+name = "simple_test_suite"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pytest",
+    "selenium",
+    "chromedriver_autoinstaller",
+    "requests",
+    "pytest-html",
+    "pytest-xdist",
+    "webdriver_manager"
+]
