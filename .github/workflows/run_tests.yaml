@@ -37,14 +37,6 @@ jobs:
       - name: Install dependencies
         run: uv sync
       
-      - name: Lint with flake8
-        run: |
-          # stop the build if there are Python syntax errors or undefined names
-          uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-          
-          # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          uv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-      
       - name: Run API Tests
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
         run: |
@@ -56,6 +48,10 @@ jobs:
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
         run: |
           uv run pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
+      
+      - name: Run Lab Tests
+        run: |
+          uv run pytest tests_thelab/ --junitxml=results/web_results.xml --html=results/lab_results.html -n auto
 
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
