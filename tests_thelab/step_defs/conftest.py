@@ -50,6 +50,12 @@ def setup_browser(request):
     OptionsClass, ServiceClass, driver_path_fn, DriverClass = options_map[browser]
     options = OptionsClass()
     options.add_argument("--start-maximized")
+
+    if browser in ("c", "e"):
+        options.add_argument("--headless=new")
+
+    if browser == "f":
+        options.add_argument("-headless")
     
     driver = DriverClass(service=ServiceClass(driver_path_fn()), options=options)
     
