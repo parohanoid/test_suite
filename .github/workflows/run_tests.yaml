@@ -48,14 +48,14 @@ jobs:
       - name: Run API Tests
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
         run: |
-          pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html
+          pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html -n auto
       
       - uses: browser-actions/setup-chrome@v1
 
       - name: Run Web Tests
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
         run: |
-          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html  
+          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
 
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
