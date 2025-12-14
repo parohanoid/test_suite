@@ -1,0 +1,11 @@
+Feature: Speed Game
+    Check that a message is shown when hitting the "End Game" button as soon as it appears.
+
+    Scenario: Verify message shown on end game
+    """
+    Check that a message is shown when hitting the "End Game" button as soon as it appears.
+    """
+
+        Given I have started the speed game
+        When I end the game
+        Then a success message should be shown

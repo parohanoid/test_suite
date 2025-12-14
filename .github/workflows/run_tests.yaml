@@ -27,35 +27,35 @@ jobs:
     
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: '3.13'
-          cache: 'pip'
+      
+      - name: Install uv
+        uses: astral-sh/setup-uv@v2
+      
+      - name: Set up Python
+        run: uv python install
       
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
+        run: uv sync
       
       - name: Lint with flake8
         run: |
           # stop the build if there are Python syntax errors or undefined names
-          flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+          uv run flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
           
           # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-          flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+          uv run flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
       
       - name: Run API Tests
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
         run: |
-          pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html -n auto
+          uv run pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html -n auto
       
       - uses: browser-actions/setup-chrome@v1
 
       - name: Run Web Tests
         if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
         run: |
-          pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
+          uv run pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
 
       - name: Upload test results to artifacts
         uses: actions/upload-artifact@v4
