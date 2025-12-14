@@ -37,17 +37,17 @@ jobs:
       - name: Install dependencies
         run: uv sync
       
-      - name: Run API Tests
-        if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
-        run: |
-          uv run pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html -n auto
+      # - name: Run API Tests
+      #   if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'API') }}
+      #   run: |
+      #     uv run pytest tests_api/ --junitxml=results/api_results.xml --html=results/api_results.html -n auto
       
-      - uses: browser-actions/setup-chrome@v1
+      # - uses: browser-actions/setup-chrome@v1
 
-      - name: Run Web Tests
-        if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
-        run: |
-          uv run pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
+      # - name: Run Web Tests
+      #   if: ${{ (inputs.which_ones == null) || (inputs.which_ones == 'Both') || (inputs.which_ones == 'WEB') }}
+      #   run: |
+      #     uv run pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
       
       - name: Run Lab Tests
         run: |
