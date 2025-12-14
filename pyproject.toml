@@ -12,5 +12,6 @@ dependencies = [
     "requests",
     "pytest-html",
     "pytest-xdist",
-    "webdriver_manager"
+    "webdriver_manager",
+    "flake8"
 ]
