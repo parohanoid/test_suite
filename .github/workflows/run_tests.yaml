@@ -49,6 +49,8 @@ jobs:
       #   run: |
       #     uv run pytest tests_web/ --junitxml=results/web_results.xml --html=results/web_results.html -n auto
       
+      - uses: browser-actions/setup-chrome@v1
+
       - name: Run Lab Tests
         run: |
           uv run pytest tests_thelab/ --junitxml=results/lab_results.xml --html=results/lab_results.html -n auto
