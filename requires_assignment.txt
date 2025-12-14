@@ -1,0 +1,32 @@
+
+Scenario
+Automate one script (or one test function) that performs all of the following steps:
+1. Open homepage
+Navigate to https://www.uitestingplayground.com/.
+Verify:
+The page title contains the text “UI Test Automation Playground”, and
+At least one of the feature links (e.g., “Dynamic ID”, “Text Input”, or “Client Side Delay”) is visible.
+2. Dynamic ID page
+Click the “Dynamic ID” link on the home page.
+On the Dynamic ID page:
+Click the button with a changing/dynamic ID (the whole point is that the id changes).
+Verify that the click is successful by asserting something observable:
+e.g. no exception, button is still displayed, or a specific text/message is present (candidate’s choice).
+Constraint: Do not locate the button by its id attribute. Use a more robust locator (text, class, etc.).
+3. Text Input page
+Navigate back to the home page (or directly follow the site’s “Home”/navigation if available).
+Click the “Text Input” link.
+On the Text Input page:
+Type a custom text into the input field (for example "Selenium Test").
+Click the button next to the input.
+Verify that the button’s label changes to match the text you entered.
+4. Client-Side Delay page
+Go back to the home page again.
+Click the “Client Side Delay” link.
+On the Client Side Delay page:
+Click the button that triggers a delayed action (the page simulates a slow client-side operation).
+Use an explicit wait (WebDriverWait) to wait for a result message to appear.
+Verify that:
+The result message is displayed, and
+The message text is not empty.
+Important: Using time.sleep() only is not acceptable for this step. They should demonstrate a proper Selenium wait.
